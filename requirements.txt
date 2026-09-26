@@ -1,0 +1,17 @@
+# ByteMind — Python dependencies
+# Keep this list minimal and intentional.
+# Only add a package when the corresponding feature is implemented.
+
+# --- Core data layer ---
+pandas>=2.1.0
+numpy>=1.26.0
+openpyxl>=3.1.0          # Excel (.xlsx) read/write support for pandas
+
+# --- Web UI ---
+streamlit>=1.35.0
+
+# --- Visualisation ---
+plotly>=5.20.0
+
+# --- Testing ---
+pytest>=8.0.0
