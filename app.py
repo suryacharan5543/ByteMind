@@ -28,9 +28,10 @@ st.markdown(
     [data-testid="stAppViewContainer"] > .main [data-testid="stExpander"],
     [data-testid="stAppViewContainer"] > .main [data-testid="stDataFrame"] {
         background: #F8FAFC;
-        border: 1px solid #D5E0EA;
+        border: 1px solid #C6DCE8;
         border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(11, 31, 51, 0.05);
+        box-shadow: 0 2px 8px rgba(11, 31, 51, 0.05),
+                0 0 12px rgba(40, 125, 168, 0.06);
     }
     [data-testid="stAppViewContainer"] > .main [data-testid="stMetric"] {
         padding: 0.9rem 1rem;
@@ -237,13 +238,30 @@ if page == "Home":
             line-height: 1.55;
             margin: 0.75rem 0 0;
         }
+        .bm-home-brand {
+            align-items: center;
+            display: flex;
+            gap: 12px;
+            margin: 0 0 0.9rem;
+        }
+        .bm-home-brand svg {
+            height: 40px;
+            width: 40px;
+        }
+        .bm-home-brand strong {
+            color: #0B1F33;
+            font-size: 1.55rem;
+            letter-spacing: .01em;
+        }
         .bm-workflow-card {
             background: #F8FAFC;
-            border: 1px solid #D5E0EA;
+            border: 1px solid #C6DCE8;
             border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(11, 31, 51, 0.05);
+            box-shadow: 0 2px 8px rgba(11, 31, 51, 0.05),
+                        0 0 12px rgba(40, 125, 168, 0.06);
             box-sizing: border-box;
             height: 176px;
+            margin: 0.5rem 0 1rem;
             padding: 1.2rem 1.15rem;
             text-align: left;
         }
@@ -277,6 +295,14 @@ if page == "Home":
             margin-top: 0.45rem;
         }
         </style>
+        <div class="bm-home-brand">
+            <svg width="30" height="30" viewBox="0 0 30 30" role="img" aria-label="ByteMind mark">
+                <rect width="30" height="30" rx="8" fill="#9CC7DD"/>
+                <path d="M8 15h14M15 8v14M10 10l10 10M20 10 10 20" stroke="#0B1F33" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="15" cy="15" r="3" fill="#0B1F33"/>
+            </svg>
+            <strong>ByteMind</strong>
+        </div>
         <div class="bm-home-hero">
             <h1>ByteMind</h1>
             <p><strong>Data Detective &amp; Investigation Assistant</strong><br>
@@ -523,8 +549,9 @@ elif page == "Data Health":
     )
     st.markdown(
         f"""
-        <div style='background:#F8FAFC; border:1px solid #D5E0EA;
-                border-radius:10px; box-shadow:0 2px 8px rgba(11,31,51,0.05);
+        <div style='background:#F8FAFC; border:1px solid #C6DCE8;
+            border-radius:10px; box-shadow:0 2px 8px rgba(11,31,51,0.05),
+            0 0 12px rgba(40,125,168,0.06);
                 padding:16px 24px; margin-bottom:8px;'>
             <span style='font-size:2rem; font-weight:700; color:{score_color};'>
                 {score:.0f} / 100
