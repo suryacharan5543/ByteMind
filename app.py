@@ -23,6 +23,21 @@ st.markdown(
     """
     <style>
     [data-testid="stAppViewContainer"] > .main { background-color: #E8EEF5; }
+    [data-testid="stAppViewContainer"] > .main [data-testid="stMetric"],
+    [data-testid="stAppViewContainer"] > .main [data-testid="stAlert"],
+    [data-testid="stAppViewContainer"] > .main [data-testid="stExpander"],
+    [data-testid="stAppViewContainer"] > .main [data-testid="stDataFrame"] {
+        background: #F8FAFC;
+        border: 1px solid #D5E0EA;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(11, 31, 51, 0.05);
+    }
+    [data-testid="stAppViewContainer"] > .main [data-testid="stMetric"] {
+        padding: 0.9rem 1rem;
+    }
+    [data-testid="stAppViewContainer"] > .main [data-testid="stExpander"] {
+        overflow: hidden;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -163,17 +178,69 @@ def _shared_upload_widget(context_label: str = "this feature") -> bool:
 if page == "🏠 Home":
     st.markdown(
         """
-        <h1 style='text-align:center; color:#1a1a2e;'>
-            🔍 ByteMind
-        </h1>
-        <p style='text-align:center; font-size:1.2rem; color:#4a4a6a;'>
-            <strong>Data Detective &amp; Investigation Assistant</strong><br>
-            For Junior Data Analysts &amp; Small-Business Owners
-        </p>
+        <style>
+        .bm-home-hero {
+            background: #0B1F33;
+            border-radius: 12px;
+            padding: 2.5rem 2.75rem;
+            margin: 0.5rem 0 2.25rem;
+            box-shadow: 0 6px 16px rgba(11, 31, 51, 0.12);
+        }
+        .bm-home-hero h1 {
+            color: #FFFFFF;
+            font-size: 2.35rem;
+            line-height: 1.15;
+            margin: 0;
+        }
+        .bm-home-hero p {
+            color: #C9DCE8;
+            font-size: 1rem;
+            line-height: 1.55;
+            margin: 0.75rem 0 0;
+        }
+        .bm-workflow-card {
+            background: #F8FAFC;
+            border: 1px solid #D5E0EA;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(11, 31, 51, 0.05);
+            box-sizing: border-box;
+            height: 176px;
+            padding: 1.2rem 1.15rem;
+            text-align: left;
+        }
+        .bm-workflow-icon {
+            color: #287DA8;
+            font-size: 1.35rem;
+            line-height: 1;
+            margin-bottom: 0.8rem;
+        }
+        .bm-workflow-number {
+            color: #287DA8;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+        .bm-workflow-title {
+            color: #0B1F33;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 0.3rem;
+        }
+        .bm-workflow-description {
+            color: #607384;
+            font-size: 0.8rem;
+            line-height: 1.45;
+            margin-top: 0.45rem;
+        }
+        </style>
+        <div class="bm-home-hero">
+            <h1>ByteMind</h1>
+            <p><strong>Data Detective &amp; Investigation Assistant</strong><br>
+            For Junior Data Analysts &amp; Small-Business Owners</p>
+        </div>
         """,
         unsafe_allow_html=True,
     )
-    st.divider()
 
     st.subheader("The Problem We Solve")
     st.write(
@@ -187,36 +254,25 @@ if page == "🏠 Home":
 
     st.subheader("How ByteMind Works")
     workflow_steps = [
-        ("📂", "Upload Dataset", "CSV, Excel (.xlsx), or JSON"),
-        ("🔄", "Format Conversion", "Convert between supported formats"),
-        ("🏥", "Data Health Check", "Missing values, duplicates, outliers, types"),
-        ("📊", "Automatic Analysis", "Statistics, correlations, trends, charts"),
-        ("💡", "Important Findings", "Surfacing what genuinely matters"),
-        ("🔍", "Investigation Suggestions", "Concrete follow-up questions"),
-        ("🤖", "AI Explanation", "Plain-language or technical narrative"),
+        ("01", "Prepare", "◇", "Upload and convert your dataset."),
+        ("02", "Check", "⌁", "Review quality, missing values, and outliers."),
+        ("03", "Understand", "◌", "Explore statistics, trends, and relationships."),
+        ("04", "Investigate", "↗", "Turn meaningful findings into next steps."),
     ]
-    cols = st.columns(len(workflow_steps))
-    for col, (icon, title, desc) in zip(cols, workflow_steps):
+    cols = st.columns(4)
+    for col, (number, title, icon, desc) in zip(cols, workflow_steps):
         with col:
             st.markdown(
                 f"""
-                <div style='
-                    background:#f0f2f6; border-radius:10px; padding:14px 10px;
-                    text-align:center; height:140px; display:flex;
-                    flex-direction:column; align-items:center; justify-content:center;
-                '>
-                    <div style='font-size:2rem;'>{icon}</div>
-                    <div style='font-weight:700; font-size:0.85rem; margin-top:6px;'>{title}</div>
-                    <div style='font-size:0.73rem; color:#4a4a6a; margin-top:4px;'>{desc}</div>
+                <div class="bm-workflow-card">
+                    <div class="bm-workflow-icon">{icon}</div>
+                    <div class="bm-workflow-number">{number}</div>
+                    <div class="bm-workflow-title">{title}</div>
+                    <div class="bm-workflow-description">{desc}</div>
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
-    st.markdown(
-        "<p style='text-align:center; font-size:0.8rem; color:#888; margin-top:8px;'>"
-        "Each step feeds into the next ↓</p>",
-        unsafe_allow_html=True,
-    )
     st.divider()
 
     st.subheader("Who Is ByteMind For?")
@@ -402,8 +458,9 @@ elif page == "🏥 Data Health":
     )
     st.markdown(
         f"""
-        <div style='background:#f7f8fa; border:1px solid #e5e7eb;
-                    border-radius:10px; padding:16px 24px; margin-bottom:8px;'>
+        <div style='background:#F8FAFC; border:1px solid #D5E0EA;
+                border-radius:10px; box-shadow:0 2px 8px rgba(11,31,51,0.05);
+                padding:16px 24px; margin-bottom:8px;'>
             <span style='font-size:2rem; font-weight:700; color:{score_color};'>
                 {score:.0f} / 100
             </span>
