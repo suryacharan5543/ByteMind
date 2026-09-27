@@ -38,6 +38,36 @@ st.markdown(
     [data-testid="stAppViewContainer"] > .main [data-testid="stExpander"] {
         overflow: hidden;
     }
+    [data-testid="stSidebar"] .stRadio label {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+    }
+    [data-testid="stSidebar"] .stRadio label::before {
+        content: "";
+        display: inline-block;
+        flex: 0 0 1.15rem;
+        width: 1.15rem;
+        height: 1.15rem;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    [data-testid="stSidebar"] .stRadio label:nth-child(1)::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%235BA7D1' d='M3 10.5 12 3l9 7.5v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 19.5z'/%3E%3Cpath fill='%230B1F33' d='M9 21v-6h6v6z'/%3E%3C/svg%3E");
+    }
+    [data-testid="stSidebar"] .stRadio label:nth-child(2)::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23D99A5B' d='M5 3h9l5 5v13H5z'/%3E%3Cpath fill='%230B1F33' d='M14 3v6h6z'/%3E%3Cpath fill='none' stroke='%230B1F33' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 17V11m0 0-2.5 2.5M12 11l2.5 2.5'/%3E%3C/svg%3E");
+    }
+    [data-testid="stSidebar"] .stRadio label:nth-child(3)::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%236BC28A' d='M12 2 20 5v6c0 5-3.4 9.1-8 11-4.6-1.9-8-6-8-11V5z'/%3E%3Cpath fill='none' stroke='%230B1F33' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.2' d='m8 12 2.5 2.5L16 9'/%3E%3C/svg%3E");
+    }
+    [data-testid="stSidebar"] .stRadio label:nth-child(4)::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%237F8FD6' d='M3 19V5h4v14zm7 0V9h4v10zm7 0V3h4v16z'/%3E%3Cpath fill='%23A97BD4' d='M3 19h18v2H3z'/%3E%3C/svg%3E");
+    }
+    [data-testid="stSidebar"] .stRadio label:nth-child(5)::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5' fill='%234FA9A5'/%3E%3Cpath fill='none' stroke='%2378C7C0' stroke-linecap='round' stroke-width='2.3' d='m15.5 15.5 5 5'/%3E%3C/svg%3E");
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -58,19 +88,28 @@ if "dataset_name" not in st.session_state:
 # Sidebar
 # ---------------------------------------------------------------------------
 with st.sidebar:
-    st.image(
-        "https://via.placeholder.com/200x60/1a1a2e/ffffff?text=ByteMind",
-        use_container_width=True,
+    st.markdown(
+        """
+        <div style="display:flex; align-items:center; gap:10px; padding:4px 0 14px;">
+            <svg width="30" height="30" viewBox="0 0 30 30" role="img" aria-label="ByteMind mark">
+                <rect width="30" height="30" rx="8" fill="#9CC7DD"/>
+                <path d="M8 15h14M15 8v14M10 10l10 10M20 10 10 20" stroke="#0B1F33" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="15" cy="15" r="3" fill="#0B1F33"/>
+            </svg>
+            <strong style="font-size:1.35rem; letter-spacing:.01em;">ByteMind</strong>
+        </div>
+        """,
+        unsafe_allow_html=True,
     )
     st.markdown("### Navigation")
     page = st.radio(
         label="Go to",
         options=[
-            "🏠 Home",
-            "📂 Upload & Convert",
-            "🏥 Data Health",
-            "📊 Analysis",
-            "🔍 Investigation",
+            "Home",
+            "Upload & Convert",
+            "Data Health",
+            "Analysis",
+            "Investigation",
         ],
         label_visibility="collapsed",
     )
@@ -175,7 +214,7 @@ def _shared_upload_widget(context_label: str = "this feature") -> bool:
 # ===========================================================================
 # HOME PAGE
 # ===========================================================================
-if page == "🏠 Home":
+if page == "Home":
     st.markdown(
         """
         <style>
@@ -213,6 +252,11 @@ if page == "🏠 Home":
             font-size: 1.35rem;
             line-height: 1;
             margin-bottom: 0.8rem;
+        }
+        .bm-workflow-icon svg {
+            display: block;
+            height: 1.75rem;
+            width: 1.75rem;
         }
         .bm-workflow-number {
             color: #287DA8;
@@ -254,10 +298,31 @@ if page == "🏠 Home":
 
     st.subheader("How ByteMind Works")
     workflow_steps = [
-        ("01", "Prepare", "◇", "Upload and convert your dataset."),
-        ("02", "Check", "⌁", "Review quality, missing values, and outliers."),
-        ("03", "Understand", "◌", "Explore statistics, trends, and relationships."),
-        ("04", "Investigate", "↗", "Turn meaningful findings into next steps."),
+        ("01", "Prepare", """
+            <svg viewBox='0 0 24 24' aria-hidden='true'>
+                <path fill='#D99A5B' d='M5 3h9l5 5v13H5z'/>
+                <path fill='#0B1F33' d='M14 3v6h6z'/>
+                <path fill='none' stroke='#0B1F33' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 17V11m0 0-2.5 2.5M12 11l2.5 2.5'/>
+            </svg>
+        """, "Upload and convert your dataset."),
+        ("02", "Check", """
+            <svg viewBox='0 0 24 24' aria-hidden='true'>
+                <path fill='#6BC28A' d='M12 2 20 5v6c0 5-3.4 9.1-8 11-4.6-1.9-8-6-8-11V5z'/>
+                <path fill='none' stroke='#0B1F33' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.2' d='m8 12 2.5 2.5L16 9'/>
+            </svg>
+        """, "Review quality, missing values, and outliers."),
+        ("03", "Understand", """
+            <svg viewBox='0 0 24 24' aria-hidden='true'>
+                <path fill='#7F8FD6' d='M3 19V5h4v14zm7 0V9h4v10zm7 0V3h4v16z'/>
+                <path fill='#A97BD4' d='M3 19h18v2H3z'/>
+            </svg>
+        """, "Explore statistics, trends, and relationships."),
+        ("04", "Investigate", """
+            <svg viewBox='0 0 24 24' aria-hidden='true'>
+                <circle cx='10.5' cy='10.5' r='6.5' fill='#4FA9A5'/>
+                <path fill='none' stroke='#78C7C0' stroke-linecap='round' stroke-width='2.3' d='m15.5 15.5 5 5'/>
+            </svg>
+        """, "Turn meaningful findings into next steps."),
     ]
     cols = st.columns(4)
     for col, (number, title, icon, desc) in zip(cols, workflow_steps):
@@ -323,7 +388,7 @@ if page == "🏠 Home":
 # ===========================================================================
 # UPLOAD & CONVERT PAGE
 # ===========================================================================
-elif page == "📂 Upload & Convert":
+elif page == "Upload & Convert":
     st.header("📂 Upload & Convert")
     st.write(
         "Upload a CSV, Excel (.xlsx), or JSON file. "
@@ -415,7 +480,7 @@ elif page == "📂 Upload & Convert":
 # ===========================================================================
 # DATA HEALTH PAGE
 # ===========================================================================
-elif page == "🏥 Data Health":
+elif page == "Data Health":
     st.header("🏥 Data Health Check")
     st.write(
         "Upload your dataset to receive a comprehensive data quality report — "
@@ -696,7 +761,7 @@ elif page == "🏥 Data Health":
 # ===========================================================================
 # ANALYSIS PAGE
 # ===========================================================================
-elif page == "📊 Analysis":
+elif page == "Analysis":
     st.header("📊 Automatic Data Analysis")
     st.write(
         "Upload a dataset to explore it automatically — descriptive statistics, "
@@ -979,7 +1044,7 @@ elif page == "📊 Analysis":
 # ===========================================================================
 # PLACEHOLDER PAGES
 # ===========================================================================
-elif page == "🔍 Investigation":
+elif page == "Investigation":
     st.header("🔍 Investigation Engine")
     st.write(
         "ByteMind highlights findings that may deserve further investigation — "
