@@ -220,15 +220,40 @@ if page == "Home":
         """
         <style>
         .bm-home-hero {
-            background: #0B1F33;
+            align-items: center;
+            background: linear-gradient(120deg, #0B1F33, #164B70);
+            border: 1px solid #285E7E;
             border-radius: 12px;
-            padding: 2.5rem 2.75rem;
-            margin: 0.5rem 0 2.25rem;
-            box-shadow: 0 6px 16px rgba(11, 31, 51, 0.12);
+            display: flex;
+            gap: 2.5rem;
+            justify-content: space-between;
+            margin: 0 0 1.75rem;
+            min-height: 208px;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 7px 18px rgba(11, 31, 51, 0.14),
+                        0 0 14px rgba(40, 125, 168, 0.08);
+        }
+        .bm-hero-copy {
+            min-width: 0;
+        }
+        .bm-hero-brand {
+            align-items: center;
+            display: flex;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+        .bm-hero-brand svg {
+            height: 42px;
+            width: 42px;
+        }
+        .bm-hero-brand strong {
+            color: #FFFFFF;
+            font-size: 1.55rem;
+            letter-spacing: .01em;
         }
         .bm-home-hero h1 {
             color: #FFFFFF;
-            font-size: 2.35rem;
+            font-size: 2.15rem;
             line-height: 1.15;
             margin: 0;
         }
@@ -236,22 +261,37 @@ if page == "Home":
             color: #C9DCE8;
             font-size: 1rem;
             line-height: 1.55;
-            margin: 0.75rem 0 0;
+            margin: 0.55rem 0 0;
         }
-        .bm-home-brand {
+        .bm-hero-journey {
             align-items: center;
+            border-left: 1px solid rgba(201, 220, 232, 0.28);
             display: flex;
-            gap: 12px;
-            margin: 0 0 0.9rem;
+            flex: 0 0 43%;
+            gap: 0.45rem;
+            justify-content: center;
+            min-width: 350px;
+            padding-left: 2rem;
         }
-        .bm-home-brand svg {
-            height: 40px;
-            width: 40px;
+        .bm-hero-step {
+            align-items: center;
+            color: #E8F2F7;
+            display: flex;
+            flex-direction: column;
+            font-size: 0.7rem;
+            font-weight: 700;
+            gap: 0.55rem;
+            text-align: center;
+            white-space: nowrap;
         }
-        .bm-home-brand strong {
-            color: #0B1F33;
-            font-size: 1.55rem;
-            letter-spacing: .01em;
+        .bm-hero-step svg {
+            height: 2rem;
+            width: 2rem;
+        }
+        .bm-hero-arrow {
+            color: #8FB2C5;
+            font-size: 0.95rem;
+            margin-top: -1.2rem;
         }
         .bm-workflow-card {
             background: #F8FAFC;
@@ -295,18 +335,28 @@ if page == "Home":
             margin-top: 0.45rem;
         }
         </style>
-        <div class="bm-home-brand">
-            <svg width="30" height="30" viewBox="0 0 30 30" role="img" aria-label="ByteMind mark">
-                <rect width="30" height="30" rx="8" fill="#9CC7DD"/>
-                <path d="M8 15h14M15 8v14M10 10l10 10M20 10 10 20" stroke="#0B1F33" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="15" cy="15" r="3" fill="#0B1F33"/>
-            </svg>
-            <strong>ByteMind</strong>
-        </div>
         <div class="bm-home-hero">
-            <h1>ByteMind</h1>
-            <p><strong>Data Detective &amp; Investigation Assistant</strong><br>
-            For Junior Data Analysts &amp; Small-Business Owners</p>
+            <div class="bm-hero-copy">
+                <div class="bm-hero-brand">
+                    <svg width="30" height="30" viewBox="0 0 30 30" role="img" aria-label="ByteMind mark">
+                        <rect width="30" height="30" rx="8" fill="#9CC7DD"/>
+                        <path d="M8 15h14M15 8v14M10 10l10 10M20 10 10 20" stroke="#0B1F33" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="15" cy="15" r="3" fill="#0B1F33"/>
+                    </svg>
+                    <strong>ByteMind</strong>
+                </div>
+                <h1>Data Detective &amp; Investigation Assistant</h1>
+                <p>For Junior Data Analysts &amp; Small-Business Owners</p>
+            </div>
+            <div class="bm-hero-journey" aria-label="ByteMind workflow">
+                <div class="bm-hero-step"><svg viewBox='0 0 24 24'><path fill='#D99A5B' d='M5 3h9l5 5v13H5z'/><path fill='#0B1F33' d='M14 3v6h6z'/><path fill='none' stroke='#0B1F33' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 17V11m0 0-2.5 2.5M12 11l2.5 2.5'/></svg>Prepare</div>
+                <span class="bm-hero-arrow">→</span>
+                <div class="bm-hero-step"><svg viewBox='0 0 24 24'><path fill='#6BC28A' d='M12 2 20 5v6c0 5-3.4 9.1-8 11-4.6-1.9-8-6-8-11V5z'/><path fill='none' stroke='#0B1F33' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.2' d='m8 12 2.5 2.5L16 9'/></svg>Check</div>
+                <span class="bm-hero-arrow">→</span>
+                <div class="bm-hero-step"><svg viewBox='0 0 24 24'><path fill='#7F8FD6' d='M3 19V5h4v14zm7 0V9h4v10zm7 0V3h4v16z'/><path fill='#A97BD4' d='M3 19h18v2H3z'/></svg>Understand</div>
+                <span class="bm-hero-arrow">→</span>
+                <div class="bm-hero-step"><svg viewBox='0 0 24 24'><circle cx='10.5' cy='10.5' r='6.5' fill='#4FA9A5'/><path fill='none' stroke='#78C7C0' stroke-linecap='round' stroke-width='2.3' d='m15.5 15.5 5 5'/></svg>Investigate</div>
+            </div>
         </div>
         """,
         unsafe_allow_html=True,
