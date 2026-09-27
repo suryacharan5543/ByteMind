@@ -19,6 +19,15 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+st.markdown(
+    """
+    <style>
+    [data-testid="stAppViewContainer"] > .main { background-color: #E8EEF5; }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # ---------------------------------------------------------------------------
 # Session-state: shared dataset
 # ---------------------------------------------------------------------------
