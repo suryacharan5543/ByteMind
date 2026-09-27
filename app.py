@@ -33,6 +33,56 @@ st.markdown(
         box-shadow: 0 2px 8px rgba(11, 31, 51, 0.05),
                 0 0 12px rgba(40, 125, 168, 0.06);
     }
+    [data-testid="stAppViewContainer"] > .main [data-testid="stPlotlyChart"],
+    [data-testid="stAppViewContainer"] > .main [data-testid="stFileUploader"],
+    [data-testid="stAppViewContainer"] > .main [data-testid="stSelectbox"],
+    [data-testid="stAppViewContainer"] > .main [data-testid="stMultiSelect"],
+    [data-testid="stAppViewContainer"] > .main [data-testid="stSlider"] {
+        background: #F8FAFC;
+        border: 1px solid #D5E4EC;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(11, 31, 51, 0.035);
+    }
+    [data-testid="stAppViewContainer"] > .main [data-testid="stFileUploader"] {
+        border-color: #B7D5E3;
+        box-shadow: 0 3px 10px rgba(11, 31, 51, 0.05),
+                    0 0 14px rgba(40, 125, 168, 0.08);
+        padding: 0.55rem;
+    }
+    [data-testid="stAppViewContainer"] > .main [data-testid="stPlotlyChart"] {
+        padding: 0.35rem;
+        overflow: hidden;
+    }
+    [data-testid="stAppViewContainer"] > .main [data-testid="stSelectbox"],
+    [data-testid="stAppViewContainer"] > .main [data-testid="stMultiSelect"],
+    [data-testid="stAppViewContainer"] > .main [data-testid="stSlider"] {
+        padding: 0.65rem 0.8rem 0.35rem;
+    }
+    [data-testid="stAppViewContainer"] > .main [data-testid="stAlert"] {
+        box-shadow: 0 2px 8px rgba(11, 31, 51, 0.035),
+                    0 0 10px rgba(40, 125, 168, 0.04);
+    }
+    [data-testid="stSidebar"] {
+        border-right: 1px solid #244A63;
+        box-shadow: 4px 0 16px rgba(11, 31, 51, 0.16);
+    }
+    [data-testid="stSidebar"] hr {
+        border-color: rgba(156, 199, 221, 0.22);
+        margin: 1rem 0;
+    }
+    [data-testid="stSidebar"] .stRadio > div {
+        border: 1px solid rgba(156, 199, 221, 0.16);
+        border-radius: 10px;
+        box-shadow: inset 0 0 12px rgba(40, 125, 168, 0.06);
+        padding: 0.3rem;
+    }
+    [data-testid="stSidebar"] .stRadio label {
+        border-radius: 7px;
+        padding: 0.45rem 0.5rem;
+    }
+    [data-testid="stSidebar"] .stRadio label:hover {
+        background: rgba(156, 199, 221, 0.08);
+    }
     [data-testid="stAppViewContainer"] > .main [data-testid="stMetric"] {
         padding: 0.9rem 1rem;
     }
@@ -129,7 +179,7 @@ with st.sidebar:
         st.caption("No dataset loaded yet.")
 
     st.divider()
-    st.caption("ByteMind v0.2.0 — IBM Bob 2.0 Hackathon")
+    st.caption("ByteMind v0.2.0")
 
 
 # ---------------------------------------------------------------------------
